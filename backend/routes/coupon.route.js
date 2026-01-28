@@ -1,10 +1,10 @@
-import express from 'express';
-import { protectRoute } from '../middleware/auth.middleware.js';
-import { getCoupon, validateCoupon } from '../controller/coupon.controller.js';
+import express from "express";
+import { protectRoute } from "../middleware/auth.middleware.js";
+import { checkoutSuccess, createCheckoutSession } from "../controllers/payment.controller.js";
 
 const router = express.Router();
 
-router.get('/', protectRoute, getCoupon);
-router.get('/validate', protectRoute, validateCoupon);
+router.post("/create-checkout-session", protectRoute, createCheckoutSession);
+router.post("/checkout-success", protectRoute, checkoutSuccess);
 
 export default router;
